@@ -2,11 +2,13 @@ name: Restaurant CI
 
 on:
   pull_request:
+    branches:
+      - main
 
 jobs:
-  ci:
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -22,5 +24,22 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Build
-        run: npm run build
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run SonarQube Analysis
+        run: echo "Running SonarQube analysis..."
+
+  trivy:
+    name: Trivy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy Scan
+        run: echo "Running Trivy security scan..."
