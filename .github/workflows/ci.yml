@@ -28,12 +28,9 @@ jobs:
         run: npm ci
 
       - name: Run lint
-        run: npm run lint
+        run: npm run lint       
 
-
-  # ==========================================
-  # JOB 2 - SONARQUBE
-  # ==========================================
+  
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
@@ -51,9 +48,9 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
 
-  # ==========================================
+  
   # JOB 3 - TRIVY
-  # ==========================================
+  
   trivy:
     name: Trivy
     runs-on: ubuntu-latest
@@ -72,9 +69,9 @@ jobs:
           exit-code: 1
 
 
-  # ==========================================
+  
   # JOB 4 - BUILD
-  # ==========================================
+  
   build:
     name: Build
     runs-on: ubuntu-latest
