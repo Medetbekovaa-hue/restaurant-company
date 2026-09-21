@@ -1,6 +1,6 @@
 name: Restaurant Company CI
 
-on:
+
   pull_request:
     branches:
       - main
