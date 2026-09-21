@@ -5,9 +5,12 @@ on:
     branches:
       - main
 
-jobs:  
+jobs:
+
+  # ==========================================
   # JOB 1 - LINT
-   lint:
+  # ==========================================
+  lint:
     name: Lint
     runs-on: ubuntu-latest
 
@@ -26,14 +29,18 @@ jobs:
 
       - name: Run lint
         run: npm run lint
+
+
+  # ==========================================
   # JOB 2 - SONARQUBE
+  # ==========================================
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        us:es: actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -43,7 +50,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
+
+  # ==========================================
   # JOB 3 - TRIVY
+  # ==========================================
   trivy:
     name: Trivy
     runs-on: ubuntu-latest
@@ -61,7 +71,10 @@ jobs:
           severity: HIGH,CRITICAL
           exit-code: 1
 
+
+  # ==========================================
   # JOB 4 - BUILD
+  # ==========================================
   build:
     name: Build
     runs-on: ubuntu-latest
