@@ -24,22 +24,19 @@ jobs:
       - name: Lint
         run: npm run lint
 
-  sonarqube:
-    name: SonarQube
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Run SonarQube Analysis
-       uses: sonarsource/sonarqube-scan-action@master
+sonarqube:
+  name: SonarQube
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Run SonarQube Analysis
+      uses: sonarsource/sonarqube-scan-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-
-
-  trivy:
+trivy:
     name: Trivy
     runs-on: ubuntu-latest
     steps:
