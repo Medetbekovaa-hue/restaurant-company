@@ -226,4 +226,4 @@ jobs:
       - name: Push latest to ECR
         run: |
           docker push \
-            355103369722.dkr.ecr.us-east-1.amazonaws.com/restaurant-company:latest
+            355103359722.dkr.ecr.us-east-1.amazonaws.com/restaurant-company:latest
